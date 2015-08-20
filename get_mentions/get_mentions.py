@@ -13,11 +13,16 @@ import time
 def get_temp_string():
 	ser = serial.Serial(serial_path, 9600)
 	ser.write(b"s")
-	print(ser.readline())
-	return "the temperature is hot"
+	temp_data = ser.readline().split(',')
+	print(temp_data[1])
+	return "the temperature is " + temp_data[1].split('.')[0] + " C"
 
 def get_humidity_string():
-	return "it's pretty humid"
+	ser = serial.Serial(serial_path, 9600)
+	ser.write(b"s")
+	temp_data = ser.readline().split(',')
+	print(temp_data[0])
+	return "the humidity is at " + temp_data[0].split('.')[0] + "%"
 
 def give_treat_and_thank():
 	ser = serial.Serial(serial_path, 9600)
@@ -27,10 +32,10 @@ def give_treat_and_thank():
 	return "thanks! I love treats :D"
 
 
-serial_path = "/dev/ttyUSB3"
+serial_path = "/dev/ttyUSB0"
 
 # open file with access keys and tokens
-f = open("/home/pi/.secrets/ORTHRUS.access")
+f = open("/home/pi/IsMartinRunning/.secrets/ORTHRUS.access")
 
 # assign keys and tokens
 secrets = f.read().split("\n")
@@ -64,7 +69,7 @@ for mention in data:
 		first = False
 
 	# get id of most recent tweet responded to
-	f = open("/home/pi/get_mentions/most_recent")
+	f = open("/home/pi/IsMartinRunning/get_mentions/most_recent")
 	most_recent = f.read().strip()
 	f.close()
 
@@ -73,8 +78,8 @@ for mention in data:
 		new = False
 
 	# skip it
-#	if not new:
-#		continue
+	if not new:
+		continue
 
 	print(mention["user"]["name"] + " (" + mention["user"]["screen_name"] + ")" + ":")
 	print("\t" + mention["text"])
@@ -100,7 +105,8 @@ for mention in data:
 
 		if "treat" in text:
 			reply_string += give_treat_and_thank()
-
+		else:
+			reply_string += " :)"
 
 
 	if reply_string:
@@ -111,7 +117,7 @@ for mention in data:
 	print("\n")
 
 # save new most recently responded to id
-f = open("/home/pi/get_mentions/most_recent", "w")
+f = open("/home/pi/IsMartinRunning/get_mentions/most_recent", "w")
 f.write(replacement_most_recent)
 f.close()
 

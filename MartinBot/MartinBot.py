@@ -11,9 +11,9 @@ pygame.camera.init()
 cam = pygame.camera.Camera("/dev/video0",(640,480))
 cam.start()
 image = cam.get_image()
-pygame.image.save(image,'/home/pi/MartinBot/image.jpg')
+pygame.image.save(image,'/home/pi/IsMartinRunning/MartinBot/image.jpg')
 
-#os.system("fswebcam -d /dev/video0 --no-banner /home/pi/MartinBot/image.jpg")
+#os.system("fswebcam -d /dev/video0 --no-banner /home/pi/IsMartinRunning/MartinBot/image.jpg")
 
 # get args from listening to arduino
 running_data = sys.argv[1].split(',')
@@ -22,7 +22,7 @@ running_data = sys.argv[1].split(',')
 message = "Just ran " + running_data[4] + "m! #crossfit #NotACult"
 
 # open file with access keys and tokens
-f = open("/home/pi/.secrets/martinBot.access")
+f = open("/home/pi/IsMartinRunning/.secrets/martinBot.access")
 
 # assign keys and tokens
 secrets = f.read().split("\n")
