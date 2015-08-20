@@ -112,7 +112,7 @@ for mention in data:
 	if reply_string:
 		reply = "@" + mention["user"]["screen_name"] + " " + reply_string
 		print(">>>>>>  " + reply)
-		# twitter.update_status(status=reply)
+		twitter.update_status(status=reply)
 	
 	print("\n")
 
