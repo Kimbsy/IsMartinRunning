@@ -20,7 +20,7 @@ running_data = sys.argv[1].split(',')
 
 # data
 time_checks = running_data[0]
-total_time = running_data[1]
+total_time = str(float(running_data[1]) / 1000)
 average_rotation_time = running_data[2]
 speed = running_data[3]
 distance = running_data[4]
