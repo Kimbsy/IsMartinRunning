@@ -67,7 +67,7 @@ void sense_dht() {
 }
 
 void give_treat() {
-  Serial.println("working");
+  Serial.println("dispensing treats");
   treat_servo.write(0);
 
   timer = millis();
