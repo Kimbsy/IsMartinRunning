@@ -13,7 +13,7 @@
 #define HALL_PIN 12
 #define LED_PIN 13
 
-// other constants
+// make sure this CIRCUMFERENCE constant is the circumference of your wheel (in metres)
 #define CIRCUMFERENCE 0.44
 
 // variables
