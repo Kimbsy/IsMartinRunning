@@ -6,4 +6,4 @@ Every time our hamster (Martin) runs on hs wheel, a photo is taken and is tweete
 
 It also can respond to tweets @IsMartinRunning giving information about the temperature/humidity of his cage, as well as being able to remotely dispense treats for him.
 
-Instructions for the project can be found at [link]
+Instructions for the project can be found at [http://www.instructables.com/id/Tweeting-hamster-cage/]
